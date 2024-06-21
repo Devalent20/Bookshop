@@ -1,0 +1,100 @@
+<style>
+  .book-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .image-container {
+    flex: 0 0 auto;
+    padding-right: 20px;
+    width: 150px; /* Ancho fijo para el contenedor de la imagen */
+    height: 220px; /* Altura fija para el contenedor de la imagen */
+    overflow: hidden; /* Ocultar cualquier desbordamiento */
+  }
+
+  .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegurar que la imagen cubra el contenedor manteniendo la proporción */
+  }
+  .book-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+  }
+  .title {
+    font-size: 20px;
+    margin: 0;
+  }
+
+  .description {
+    margin: 0;
+    max-width: 600px;
+  }
+
+  .author {
+    margin: 1;
+  }
+
+  .year {
+    margin: 0;
+  }
+
+  .gender {
+    color: rgb(185, 173, 173);
+  }
+
+  .price {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    border-left: 1px solid black;
+    height: 20vh;
+    padding-left: 20px;
+  }
+
+  .price span {
+    font-size: 26px;
+    margin-top: 10px;
+  }
+
+  .buttonBuy {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px; /* Relleno interno */
+    font-size: 18px;
+    cursor: pointer; /* Cursor al pasar */
+    border-radius: 4px;
+    width: 120px;
+    margin-bottom: 15px;
+    margin: 10px;
+  }
+
+  .buttonBuy:hover {
+    font-weight: bold;
+  }
+</style>
+
+<article class="book-details">
+  <div class="image-container">
+    <img
+      src="{{ '/assets/images/' + book.imgName }}"
+      alt="Foto de alas de sangre"
+    />
+  </div>
+  <div class="book-info">
+    <h2 class="title">{{ book.title }}</h2>
+    <p class="description">{{ book.description }}</p>
+    <p class="author">{{ book.author }}</p>
+    <p class="year">{{ book.year }}</p>
+    <p class="gender">{{ book.gender }}</p>
+  </div>
+  <div class="price">
+    <span>{{ book.price | currency : "EUR" }}</span>
+    <button class="buttonBuy" (click)="buy(book.title)">Comprar</button>
+  </div>
+</article>
